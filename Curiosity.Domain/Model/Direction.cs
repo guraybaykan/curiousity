@@ -1,4 +1,4 @@
-﻿namespace Coriousity.Model
+﻿namespace Coriousity.Domain.Model
 {
     public enum Direction
     {
