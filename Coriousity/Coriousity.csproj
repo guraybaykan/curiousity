@@ -6,8 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Curiosity.Application\Curiosity.Application.csproj" />
     <ProjectReference Include="..\Curiosity.Domain\Curiosity.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Commands.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

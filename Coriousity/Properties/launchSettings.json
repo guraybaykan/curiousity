@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Coriousity": {
+      "commandName": "Project",
+      "commandLineArgs": "Commands.txt"
+    }
+  }
+}
