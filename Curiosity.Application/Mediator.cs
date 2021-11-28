@@ -9,10 +9,37 @@ namespace Curiosity.Application
     {
         public void Send(string command)
         {
-            if (TryGetCommandType(command, out Type commandType))
+            if (!TryGetCommandType(command, out Type commandType))
             {
-                Console.WriteLine($"{command} -> {commandType.Name}");
+                return;
             }
+
+            var parserType = GetProviderOfCommandType(typeof(ICommandParser<>), commandType);
+
+            if (parserType is null)
+            {
+                return;
+            }
+
+            var parser = Activator.CreateInstance(parserType);
+
+            var commandObj = parserType.GetMethod("Parse")?.Invoke(parser, new[] { command });
+
+            if (commandObj is null)
+            {
+                return;
+            }
+
+            var commandHandlerType = GetProviderOfCommandType(typeof(ICommandHandler<>), commandType);
+
+            if (commandHandlerType is null)
+            {
+                return;
+            }
+
+            var commandHandler = Activator.CreateInstance(commandHandlerType);
+
+            commandHandlerType.GetMethod("Handle")?.Invoke(commandHandler, new[] { commandObj });
         }
 
 
@@ -35,6 +62,13 @@ namespace Curiosity.Application
             }
 
             return false;
+        }
+
+        private Type GetProviderOfCommandType(Type providerType, Type commandType)
+        {
+            return (from t in this.GetType().Assembly.GetTypes()
+                    where t.IsAssignableTo(providerType.MakeGenericType(new Type[] { commandType }))
+                    select t).FirstOrDefault();
         }
     }
 }

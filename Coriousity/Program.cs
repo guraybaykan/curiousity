@@ -3,7 +3,6 @@ using Curiosity.Application;
 using Curiosity.Domain;
 using Curiosity.Manager;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.IO;
 
 namespace Coriousity
