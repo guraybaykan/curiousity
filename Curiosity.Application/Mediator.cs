@@ -26,7 +26,8 @@ namespace Curiosity.Application
 
             foreach (Type type in commandTypes)
             {
-                if (type.GetCustomAttributes(typeof(ConsoleCommandAttribute), false)[0] is ConsoleCommandAttribute consoleCommand && Regex.IsMatch(command, consoleCommand.Pattern, RegexOptions.Compiled))
+                var consoleCommands = type.GetCustomAttributes(typeof(ConsoleCommandAttribute), false);
+                if (consoleCommands.Any() && consoleCommands[0] is ConsoleCommandAttribute consoleCommand && Regex.IsMatch(command, consoleCommand.Pattern, RegexOptions.Compiled))
                 {
                     commandType = type;
                     return true;
