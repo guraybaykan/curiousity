@@ -6,6 +6,9 @@ namespace Coriousity.Domain.Manager
     {
         void Create(int width, int heigth);
         Plateau Get();
-        void PutRover(Plateau plateau, int x, int y);
+        bool TryPutRover(int x, int y, Directions direction);
+        Rover GetLastAddedRover();
+        bool IsAnyRoverInLocation(int x, int y);
+        bool IsInBoundaries(int x, int y);
     }
 }

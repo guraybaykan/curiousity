@@ -14,8 +14,6 @@ namespace Curiosity.Application.Command
         public void Handle(CreateLandingAreaCommand command)
         {
             _plateauManager.Create(command.Width, command.Height);
-
-            var plateau = _plateauManager.Get();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Coriousity.Domain.Model
 {
-    public enum Direction
+    public enum Directions
     {
         North = 0,
         East = 1,

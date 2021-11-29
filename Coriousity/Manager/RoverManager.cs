@@ -1,24 +1,40 @@
 ﻿using Coriousity.Domain.Manager;
 using Coriousity.Domain.Model;
-using System;
 
 namespace Curiosity.Manager
 {
     class RoverManager : IRoverManager
     {
-        public void Move(Plateau plateau, ref Rover rover)
+        public void Move(ref Rover rover)
         {
-            throw new NotImplementedException();
+            (rover.X, rover.Y) = SimulateMovement(rover);
+        }
+
+        public (int x, int y) PredictMove(Rover rover)
+        {
+            return SimulateMovement(rover);
         }
 
         public void TurnLeft(ref Rover rover)
         {
-            throw new NotImplementedException();
+            rover.Direction = (Directions)((uint)(rover.Direction - 1) % 4);
         }
 
         public void TurnRight(ref Rover rover)
         {
-            throw new NotImplementedException();
+            rover.Direction = (Directions)((uint)(rover.Direction + 1) % 4);
+        }
+
+        private (int x, int y) SimulateMovement(Rover rover)
+        {
+            return rover.Direction switch
+            {
+                Directions.North => (rover.X, rover.Y + 1),
+                Directions.East => (rover.X + 1, rover.Y),
+                Directions.South => (rover.X, rover.Y - 1),
+                Directions.West => (rover.X - 1, rover.Y),
+                _ => (rover.X, rover.Y),
+            };
         }
     }
 }

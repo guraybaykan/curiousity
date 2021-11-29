@@ -1,5 +1,7 @@
 ﻿using Curiosity.Domain;
+using Curiosity.Domain.Model;
 using System;
+using System.Linq;
 
 namespace Curiosity.Application.Command
 {
@@ -7,7 +9,18 @@ namespace Curiosity.Application.Command
     {
         public DriveRoverCommand Parse(string command)
         {
-            throw new NotImplementedException();
+            var moves = command.ToCharArray().Select(x => x switch
+            {
+                'L' => Move.L,
+                'M' => Move.M,
+                'R' => Move.R,
+                _ => throw new Exception("Wrong Input ")
+            });
+
+            return new DriveRoverCommand
+            {
+                Moves = moves.ToArray()
+            };
         }
     }
 }
