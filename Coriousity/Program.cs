@@ -1,5 +1,6 @@
 ﻿using Coriousity.Domain.Manager;
 using Curiosity.Application;
+using Curiosity.Application.Command;
 using Curiosity.Domain;
 using Curiosity.Manager;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,10 +26,16 @@ namespace Coriousity
         static ServiceProvider AddDI()
         {
             return new ServiceCollection()
-                 .AddSingleton<IPlateauManager, PlateauManager>()
-                 .AddSingleton<IRoverManager, RoverManager>()
-                 .AddSingleton<IMediator, Mediator>()
-                 .BuildServiceProvider();
+            .AddSingleton<IPlateauManager, PlateauManager>()
+            .AddSingleton<IRoverManager, RoverManager>()
+            .AddSingleton<IMediator, Mediator>()
+            .AddSingleton<ICommandParser<CreateLandingAreaCommand>, CreateLandingAreaCommandParser>()
+            .AddSingleton<ICommandParser<DriveRoverCommand>, DriveRoverCommandParser>()
+            .AddSingleton<ICommandParser<LocateRoverCommand>, LocateRoverCommandParser>()
+            .AddSingleton<ICommandHandler<CreateLandingAreaCommand>, CreateLandingAreaCommandHandler>()
+            .AddSingleton<ICommandHandler<DriveRoverCommand>, DriveRoverCommandHandler>()
+            .AddSingleton<ICommandHandler<LocateRoverCommand>, LocateRoverCommandHandler>()
+            .BuildServiceProvider();
         }
     }
 }

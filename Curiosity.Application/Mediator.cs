@@ -7,6 +7,14 @@ namespace Curiosity.Application
 {
     public class Mediator : IMediator
     {
+        private const string ParseMethod = "Parse";
+        private const string HandleMethod = "Handle";
+        private readonly IServiceProvider _serviceProvider;
+
+        public Mediator(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
         public void Send(string command)
         {
             if (!TryGetCommandType(command, out Type commandType))
@@ -14,32 +22,25 @@ namespace Curiosity.Application
                 return;
             }
 
-            var parserType = GetProviderOfCommandType(typeof(ICommandParser<>), commandType);
+            var parserInterfaceType = typeof(ICommandParser<>).MakeGenericType(new Type[] { commandType });
+            var parser = _serviceProvider.GetService(parserInterfaceType);
 
-            if (parserType is null)
+            if (parser is null)
             {
                 return;
             }
 
-            var parser = Activator.CreateInstance(parserType);
-
-            var commandObj = parserType.GetMethod("Parse")?.Invoke(parser, new[] { command });
+            var commandObj = parserInterfaceType.GetMethod(ParseMethod)?.Invoke(parser, new[] { command });
 
             if (commandObj is null)
             {
                 return;
             }
 
-            var commandHandlerType = GetProviderOfCommandType(typeof(ICommandHandler<>), commandType);
+            var commandHandlerInterfaceType = typeof(ICommandHandler<>).MakeGenericType(new Type[] { commandType });
+            var commandHandler = _serviceProvider.GetService(commandHandlerInterfaceType);
 
-            if (commandHandlerType is null)
-            {
-                return;
-            }
-
-            var commandHandler = Activator.CreateInstance(commandHandlerType);
-
-            commandHandlerType.GetMethod("Handle")?.Invoke(commandHandler, new[] { commandObj });
+            commandHandlerInterfaceType.GetMethod(HandleMethod)?.Invoke(commandHandler, new[] { commandObj });
         }
 
 
@@ -64,11 +65,6 @@ namespace Curiosity.Application
             return false;
         }
 
-        private Type GetProviderOfCommandType(Type providerType, Type commandType)
-        {
-            return (from t in this.GetType().Assembly.GetTypes()
-                    where t.IsAssignableTo(providerType.MakeGenericType(new Type[] { commandType }))
-                    select t).FirstOrDefault();
-        }
+
     }
 }

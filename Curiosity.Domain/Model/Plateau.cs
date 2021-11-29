@@ -6,6 +6,6 @@ namespace Coriousity.Domain.Model
     {
         public int Width { get; set; }
         public int Height { get; set; }
-        public IList<Rover> Rovers { get; set; }
+        public List<Rover> Rovers { get; set; }
     }
 }
