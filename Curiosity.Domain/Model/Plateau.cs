@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Coriousity.Domain.Model
+namespace Curiosity.Domain.Model
 {
     public class Plateau
     {

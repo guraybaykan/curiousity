@@ -1,5 +1,5 @@
-﻿using Coriousity.Domain.Manager;
-using Coriousity.Domain.Model;
+﻿using Curiosity.Domain.Manager;
+using Curiosity.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿using Coriousity.Domain.Manager;
+﻿using Curiosity.Domain.Manager;
 using Curiosity.Domain;
 using Curiosity.Domain.Model;
 

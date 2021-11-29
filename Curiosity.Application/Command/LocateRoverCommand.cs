@@ -1,4 +1,4 @@
-﻿using Coriousity.Domain.Model;
+﻿using Curiosity.Domain.Model;
 using Curiosity.Domain;
 
 namespace Curiosity.Application.Command

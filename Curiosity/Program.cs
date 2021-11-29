@@ -1,4 +1,4 @@
-﻿using Coriousity.Domain.Manager;
+﻿using Curiosity.Domain.Manager;
 using Curiosity.Application;
 using Curiosity.Application.Command;
 using Curiosity.Domain;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
 
-namespace Coriousity
+namespace Curiosity
 {
     static class Program
     {

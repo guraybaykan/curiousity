@@ -1,4 +1,4 @@
-﻿namespace Coriousity.Domain.Model
+﻿namespace Curiosity.Domain.Model
 {
     public class Rover
     {

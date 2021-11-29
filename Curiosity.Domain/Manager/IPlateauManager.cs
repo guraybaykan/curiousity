@@ -1,6 +1,6 @@
-﻿using Coriousity.Domain.Model;
+﻿using Curiosity.Domain.Model;
 
-namespace Coriousity.Domain.Manager
+namespace Curiosity.Domain.Manager
 {
     public interface IPlateauManager
     {

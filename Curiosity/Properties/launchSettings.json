@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Coriousity": {
+    "Curiosity": {
       "commandName": "Project",
       "commandLineArgs": "Commands.txt"
     }

@@ -1,9 +1,9 @@
-﻿using Coriousity.Domain.Manager;
-using Coriousity.Domain.Model;
+﻿using Curiosity.Domain.Manager;
+using Curiosity.Domain.Model;
 
 namespace Curiosity.Manager
 {
-    class RoverManager : IRoverManager
+    public class RoverManager : IRoverManager
     {
         public void Move(ref Rover rover)
         {

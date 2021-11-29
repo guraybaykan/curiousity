@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Curiosity.Application", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Curiosity.Domain", "Curiosity.Domain\Curiosity.Domain.csproj", "{9F424D5F-2CE6-4058-B6D7-495E22B962DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Curiosity.Tests", "Curiosity.Tests\Curiosity.Tests.csproj", "{76678951-D448-4056-919C-13F523C375FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9F424D5F-2CE6-4058-B6D7-495E22B962DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F424D5F-2CE6-4058-B6D7-495E22B962DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F424D5F-2CE6-4058-B6D7-495E22B962DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76678951-D448-4056-919C-13F523C375FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76678951-D448-4056-919C-13F523C375FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76678951-D448-4056-919C-13F523C375FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76678951-D448-4056-919C-13F523C375FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
